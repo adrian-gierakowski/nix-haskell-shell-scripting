@@ -1,1 +1,3 @@
-main = putStrLn "Hello Haskell!"
+import Turtle
+
+main = echo "Hello Turtle!"
