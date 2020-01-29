@@ -1,7 +1,11 @@
 let
-  inherit (import ../../nix/default.nix {}) pkgs;
+  inherit (import ../../nix/default.nix {}) pkgs shell;
 
 in
-  pkgs.mkShell {
-    buildInputs = [ (pkgs.ghc.withPackages (x: [ x.turtle ])) ];
+  with pkgs; mkShell {
+    buildInputs = [
+      (ghc.withPackages (x: [ x.turtle ]))
+      cabal-install
+      cabal2nix
+    ];
   }
