@@ -17,6 +17,9 @@ in
 
     shell = with pkgs; mkShell {
       buildInputs = [
+        cabal-install
+        cabal2nix
+        ghc
         niv
       ];
     };
