@@ -1,0 +1,16 @@
+name: build
+on: [push, pull_request]
+jobs:
+  tests:
+    strategy:
+      matrix:
+        os: [ubuntu-18.04, macos]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v1
+    - uses: cachix/install-nix-action@v6
+    - uses: cachix/cachix-action@v3
+      with:
+        file: shell-utils/basic/release.nix
+        name: ag
+        signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
